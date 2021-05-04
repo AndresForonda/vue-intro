@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-if/v-else example</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+      body {
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+        padding: 5px;
+        background-color: rgb(255, 81, 0);
+        border-radius: 5px;
+        border: 1px solid #000;
+        color: #fff;
+      }
+      .input-wrapper {
+        margin: 10px;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>do you like pizza?</h3>
+    <div class="input-wrapper">
+      <input type="radio" v-model="pizza" value="yes" id="yes"/>
+      <label for="yes">Yes</label>
+    </div>
+    <div>
+      <input type="radio" v-model="pizza" value="no" id="no" />
+      <label for="no">no</label>
+    </div>    
+    <p v-if="pizza === 'yes'">🍕 is the best food!</p>
+    <p v-else-if="pizza === 'no'">🤪 Ahh you're crazy!</p>
+    <p v-else>Select an option</p>
+  </div>
+  <script>
+    const App = {
+      data() {
+        return {
+          pizza: ''
+        }
+      }
+    }
+    Vue.createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>
