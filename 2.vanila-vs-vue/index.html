@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello world with Vue</title>
+</head>
+<body>
+  <div id="app">
+  </div>
+  <script>
+    const items = [
+      "Learn Vue",
+      "Teach Vue",
+      "Take a break",
+      "Play hard"
+    ];
+    const listOfItems = (items) => {
+      const fullList = items.map(el => `<li> ${el} </li>`).join('');
+
+      const contain = document.querySelector('#app');
+      app.innerHTML = `<ul> ${fullList} </ul>`;
+    }
+    listOfItems(items)
+  </script>
+</body>
+</html>
