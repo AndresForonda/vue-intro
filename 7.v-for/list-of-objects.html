@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-for example</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+      body {
+        text-align: center;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+  <h3>Family members</h3>
+  <div>
+      <p
+        v-for="(value, key, index) in family"
+        :key="value"
+      >
+        {{index + 1}}. 
+        <strong>{{key}}:</strong> 
+        {{value}}
+      </p>
+  </div>
+  </div>
+  <script>
+  const App = {
+    data() {
+      return {
+        family: {
+          Dad: 'Andres',
+          Mom: 'Diana',
+          Son: 'Andres Jr.',
+        }
+      }
+    }
+  }
+  Vue.createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>

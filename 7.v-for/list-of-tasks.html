@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-for example</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+      body {
+        text-align: center;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+  <h3>Grocery list</h3>
+  <div>
+      <p
+        v-for="(grocery, index) in list"
+        :key="index"
+      >
+        {{ `${index + 1}. ${grocery.quantity} ${grocery.item}` }}
+      </p>
+  </div>
+  </div>
+  <script>
+  const App = {
+    data() {
+      return {
+        list: [
+          {
+            item: 'Bread',
+            quantity: 2
+          },
+          {
+            item: 'Eggs',
+            quantity: 12
+          },
+          {
+            item: 'Milk',
+            quantity: 4
+          }
+        ]
+      }
+    }
+  }
+  Vue.createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>
