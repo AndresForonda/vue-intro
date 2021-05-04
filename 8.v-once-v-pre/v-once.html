@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-model example</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>Type here:</h3>
+    <input v-model="message" />
+    <br>  
+    <p v-once>Initial message: {{ message }}</p>
+    <p>Current message: {{ message }}</p>
+  </div>
+  <script>
+    const App = {
+      data() {
+        return {
+          message: 'Hello world!'
+        }
+      }
+    }
+    Vue.createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>
