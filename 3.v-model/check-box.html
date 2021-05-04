@@ -7,6 +7,7 @@
   <style>
     body {
       padding: 40px;
+      text-align: center;
     }
     label {
       margin-right: 20px;
@@ -41,9 +42,12 @@
     <label for="sanji">Sanji Vinsmoke Seiyuu</label>
 
     <br>
-    <p>{{ checkedNames }}</p>
+    <p>Checked names: {{ checkedNames }}</p>
     <br>
-    <p v-for="name in checkedNames">{{ name }}</p>
+    <div>
+      <h3>List of names</h3>
+      <p v-for="name in checkedNames">{{ name }}</p>
+    </div>
   </div>
   <script>
     const App = {
