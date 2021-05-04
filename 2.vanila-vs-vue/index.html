@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello world with Vue</title>
+  <title>Items from Vanilla JS</title>
 </head>
 <body>
   <div id="app">
@@ -14,7 +14,8 @@
       "Play hard"
     ];
     const listOfItems = (items) => {
-      const fullList = items.map(el => `<li> ${el} </li>`).join('');
+      const fullList = items.map(
+        el => `<li> ${el} </li>`).join('');
 
       const contain = document.querySelector('#app');
       app.innerHTML = `<ul> ${fullList} </ul>`;
