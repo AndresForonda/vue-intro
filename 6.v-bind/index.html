@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-if/v-show example</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+      body {
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .activeClass {
+        background-color: rgb(255, 81, 0);
+        border: 1px solid #000;
+      }
+  </style>
+</head>
+
+<body>
+<div id="app">
+  <h3>What is your favorite kind of pizza?</h3>
+  <input type="text" v-model="pizza" />
+  <br>
+  <button
+    v-bind:class="[pizza ? 'activeClass' : '']"
+  >
+    Order now
+  </button>
+</div>
+<script>
+  const App = {
+    data() {
+      return {
+        pizza: ''
+      }
+    }
+  }
+  Vue.createApp(App).mount('#app')
+</script>
+</body>
+
+</html>
