@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-html example</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    div {
+      text-align: center;
+      margin: auto auto;
+      max-width: 700px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3>My favorite cake!</h3>
+    <p v-html="cake"></p>
+  </div>
+  <script>
+    const App = {
+      data() {
+        return {
+          cake: `See my favorite cake
+            <a
+              href="https://lh3.googleusercontent.com/proxy/nRDgj8gz55pXPIhOXHo4r9dUKMGHJ56EUE8XM5NIUA81QaUNu9ZgtXGZ57ZDwV1pmQz4RPuXKr5JLd5PLEERDQksjmXSqAGmMv61Wqx3z6ttyDHyZOciZaPp_vTLiQ"
+              target="_blank"
+            >
+              here
+            </a>`
+        }
+      }
+    }
+    Vue.createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>
