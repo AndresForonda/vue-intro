@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>v-model example with checkbox</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    body {
+      padding: 40px;
+    }
+    label {
+      margin-right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input
+      type="checkbox"
+      v-model="checkedNames"
+      id="mdf"
+      value="Monkey D. Luffy"
+    >
+    <label for="mdf">Monkey D. Luffy</label>
+
+    <input
+      type="checkbox"
+      v-model="checkedNames"
+      id="zoro"
+      value="Roronoa Zoro"
+    >
+    <label for="zoro">Roronoa Zoro</label>
+
+    <input
+      type="checkbox"
+      v-model="checkedNames"
+      id="sanji"
+      value="Sanji Vinsmoke Seiyuu"
+    >
+    <label for="sanji">Sanji Vinsmoke Seiyuu</label>
+
+    <br>
+    <p>{{ checkedNames }}</p>
+    <br>
+    <p v-for="name in checkedNames">{{ name }}</p>
+  </div>
+  <script>
+    const App = {
+      data() {
+        return {
+          checkedNames: []
+        }
+      }
+    }
+    Vue.createApp(App).mount('#app')
+  </script>
+</body>
+
+</html>
