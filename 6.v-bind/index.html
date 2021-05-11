@@ -26,10 +26,10 @@
 <body>
 <div id="app">
   <h3>What is your favorite kind of pizza?</h3>
-  <input type="text" v-model="pizza" />
+  <input type="text" v-model="pizza" :placeholder="placeholder" />
   <br>
   <button
-    v-bind:class="[pizza ? 'activeClass' : '']"
+    :class="[pizza ? 'activeClass' : '']"
   >
     Order now
   </button>
@@ -38,7 +38,8 @@
   const App = {
     data() {
       return {
-        pizza: ''
+        pizza: '',
+        placeholder: 'Enter a taco'
       }
     }
   }
