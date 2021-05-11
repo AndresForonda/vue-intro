@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>v-bind example</title>
-  <script src="https://unpkg.com/vue@next"></script>
-  <style>
+  <head>
+    <title>v-bind example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
       body {
         text-align: center;
       }
@@ -20,31 +19,26 @@
         background-color: rgb(255, 81, 0);
         border: 1px solid #000;
       }
-  </style>
-</head>
+    </style>
+  </head>
 
-<body>
-<div id="app">
-  <h3>What is your favorite kind of pizza?</h3>
-  <input type="text" v-model="pizza" :placeholder="placeholder" />
-  <br>
-  <button
-    :class="[pizza ? 'activeClass' : '']"
-  >
-    Order now
-  </button>
-</div>
-<script>
-  const App = {
-    data() {
-      return {
-        pizza: '',
-        placeholder: 'Enter a taco'
-      }
-    }
-  }
-  Vue.createApp(App).mount('#app')
-</script>
-</body>
-
+  <body>
+    <div id="app">
+      <h3>What is your favorite kind of pizza?</h3>
+      <input type="text" v-model="pizza" :placeholder="placeholder" />
+      <br />
+      <button :class="[pizza ? 'activeClass' : '']">Order now</button>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            pizza: "",
+            placeholder: "Enter a pizza",
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
 </html>
