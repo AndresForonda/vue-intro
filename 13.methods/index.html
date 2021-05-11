@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>v-on example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      body {
+        text-align: center;
+      }
+      .card {
+        background: rgb(18, 149, 224);
+        padding: 10px 10px 20px 10px;
+        width: 240px;
+        margin: 100px auto;
+        border-radius: 10px;
+      }
+      img {
+        padding: 20px;
+        border-radius: 30px;
+      }
+      .quantity-wrapper {
+        background-color: #fff;
+        padding: 5px 20px;
+        display: flex;
+        justify-content: space-between;
+        width: 160px;
+        margin: auto auto;
+        border-radius: 20px;
+        border: 2px solid rgb(0, 57, 104);
+      }
+      button {
+        border: none;
+        background-color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="card" @mousemove="xPosition">
+        <img src="./Sunny.jpeg" alt="Sunny Go" width="200" />
+        <div class="quantity-wrapper">
+          <button @click="decreaseQuantity">-</button>
+          <span>Quantity: {{ quantity }}</span>
+          <button @click="increaseQuantity">+</button>
+        </div>
+      </div>
+      <div :style="{ backgroundColor: `hsl(${x}, 80%, 50%)`}">
+        Position: {{ x }}
+      </div>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            quantity: 0,
+            x: 0,
+          };
+        },
+        methods: {
+          decreaseQuantity() {
+            this.quantity += this.quantity > 0 ? -1 : 0;
+          },
+          increaseQuantity() {
+            this.quantity += 1;
+          },
+          xPosition(e) {
+            console.log(e);
+            this.x = e.clientX;
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
