@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>v-model example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h3>Type here:</h3>
+      <input v-model="name" type="text" placeholder="name" />
+      <input v-model="lastname" type="text" placeholder="lastname" />
+      <br />
+      <p>{{ fullName }}</p>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            name: "",
+            lastname: "",
+          };
+        },
+        computed: {
+          fullName() {
+            return `${this.name} ${this.lastname}`;
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
