@@ -16,29 +16,60 @@
       }
 
       .activeClass {
-        background-color: rgb(255, 81, 0);
+        background-color: rgb(0, 26, 255);
+        color: #fff;
         border: 1px solid #000;
         cursor: pointer;
+      }
+
+      .wrapper {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgb(245, 88, 31);
+        color: white;
+        border: solid 1px black;
+        border-radius: 10px;
+      }
+
+      .list {
+        background-color: #fff;
+        color: #000;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .pizza {
+        text-align: left;
+        margin: 10px;
       }
     </style>
   </head>
 
   <body>
     <div id="app">
-      <h3>Pizza to be added to the list</h3>
-      <input
-        type="text"
-        v-model="pizza"
-        :placeholder="placeholder"
-        @keyup.enter="addPizza"
-      />
-      <br />
-      <button :class="[pizza ? 'activeClass' : '']" @click="addPizza">
-        Add
-      </button>
-      <br />
-      <h3 v-if="pizzas.length">List of pizzas</h3>
-      <p v-for="(pizza, index) in pizzas" :key="index">{{ pizza }}</p>
+      <div class="wrapper">
+        <div class="input-card">
+          <h3>Pizza to be added to the list</h3>
+          <input
+            type="text"
+            v-model="pizza"
+            :placeholder="placeholder"
+            @keyup.enter="addPizza"
+          />
+          <br />
+          <button :class="[pizza ? 'activeClass' : '']" @click="addPizza">
+            Add
+          </button>
+        </div>
+        <br />
+        <div class="list" v-if="pizzas.length">
+          <h3>List of pizzas</h3>
+          <p class="pizza" v-for="(pizza, index) in pizzas" :key="index">
+            {{ pizza }}
+          </p>
+        </div>
+      </div>
     </div>
     <script>
       const App = {
