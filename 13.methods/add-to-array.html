@@ -26,7 +26,12 @@
   <body>
     <div id="app">
       <h3>Pizza to be added to the list</h3>
-      <input type="text" v-model="pizza" :placeholder="placeholder" />
+      <input
+        type="text"
+        v-model="pizza"
+        :placeholder="placeholder"
+        @keyup.enter="addPizza"
+      />
       <br />
       <button :class="[pizza ? 'activeClass' : '']" @click="addPizza">
         Add
