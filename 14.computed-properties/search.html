@@ -112,9 +112,8 @@
         computed: {
           filteredPizzas() {
             if (!this.filter) return this.pizzas;
-            return this.pizzas.filter((pizza) =>
-              pizza.name.includes(this.filter)
-            );
+            let filter = new RegExp(this.filter, "i");
+            return this.pizzas.filter((pizza) => pizza.name.match(filter));
           },
         },
         methods: {
