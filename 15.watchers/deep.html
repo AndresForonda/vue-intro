@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Watchers example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      body {
+        text-align: center;
+        padding: 200px;
+      }
+      select,
+      input {
+        display: block;
+        margin: 20px auto;
+      }
+      #app {
+        width: 300px;
+        background-color: purple;
+        border-radius: 20px;
+        padding: 30px;
+        margin: auto;
+      }
+      .info {
+        border: solid 1px #fff;
+        width: 260px;
+        padding: 20px;
+        margin: auto;
+        border-radius: 20px;
+        color: #fff;
+      }
+      .mb-10 {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="info mb-10">
+        <select v-model="title">
+          <option v-for="option in options" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
+        <input v-model="user.name" type="text" placeholder="Name" />
+        <input v-model="user.lastname" type="text" placeholder="Lastname" />
+        <input
+          v-model="user.info.favoriteFood"
+          type="text"
+          placeholder="Favorite food"
+        />
+      </div>
+      <div class="info">
+        <h3>Additional info</h3>
+        <input
+          v-model="newProperty"
+          type="text"
+          placeholder="New info property"
+        />
+        <input
+          v-model="newPropertyValue"
+          type="text"
+          placeholder="New info value"
+        />
+        <button @click="addNewInfo">Add new info</button>
+        <div v-for="property in additionalInfo">
+          <input
+            type="text"
+            v-model="user.info[property]"
+            :placeholder="property"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            title: "Mr",
+            options: [
+              "Mr",
+              "Mrs",
+              "Miss",
+              "Ms",
+              "Mx",
+              "Sir",
+              "Dr",
+              "Lady",
+              "Lord",
+            ],
+            user: {
+              name: "",
+              lastname: "",
+              info: {
+                favoriteFood: "",
+              },
+            },
+            newProperty: "",
+            newPropertyValue: "",
+          };
+        },
+        computed: {
+          additionalInfo() {
+            console.log(this.user.info);
+            return Object.keys(this.user.info);
+          },
+        },
+        methods: {
+          addNewInfo() {
+            this.user.info[this.newProperty] = this.newPropertyValue;
+            this.newProperty = "";
+            this.newPropertyValue = "";
+          },
+        },
+        watch: {
+          title(newValue, oldValue) {
+            console.log(`You changed from ${oldValue} to ${newValue}`);
+          },
+          user: {
+            deep: true,
+            handler() {
+              console.log("Name, info or lastname updated");
+            },
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
