@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Method - Pizza list example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      body {
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .activeClass {
+        background-color: rgb(0, 26, 255);
+        color: #fff;
+        border: 1px solid #000;
+        cursor: pointer;
+      }
+
+      .wrapper {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgb(245, 88, 31);
+        color: white;
+        border: solid 1px black;
+        border-radius: 10px;
+      }
+
+      .list {
+        background-color: #fff;
+        color: #000;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .pizza {
+        text-align: left;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <div class="input-card">
+          <h3>Pizza to be added to the list</h3>
+          <input
+            type="text"
+            v-model="pizza"
+            :placeholder="placeholder"
+            @keyup.enter="addPizza"
+          />
+          <br />
+          <button :class="[pizza ? 'activeClass' : '']" @click="addPizza">
+            Add
+          </button>
+        </div>
+        <br />
+        <div class="list" v-if="pizzas.length">
+          <h3>List of pizzas</h3>
+          <p>Pizzas To Do: {{ toDo }}</p>
+          <p class="pizza" v-for="(pizza, index) in pizzas" :key="index">
+            {{ pizza.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            pizza: "",
+            pizzas: [],
+            placeholder: "Enter a pizza",
+          };
+        },
+        methods: {
+          addPizza() {
+            this.pizzas.push({ name: `🍕 ${this.pizza}`, done: false });
+            this.pizza = "";
+          },
+        },
+        computed: {
+          toDo() {
+            return this.pizzas.filter((pizza) => !pizza.done).length;
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
