@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>v-bind example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      body {
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+        padding: 5px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .button {
+        background-color: rgb(0, 26, 255);
+        color: #fff;
+        border: 1px solid #000;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .wrapper {
+        width: 300px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgb(245, 88, 31);
+        color: white;
+        border: solid 1px black;
+        border-radius: 10px;
+      }
+
+      .list {
+        background-color: #fff;
+        color: #000;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .pizza {
+        margin: auto;
+      }
+
+      .name {
+        text-align: left;
+      }
+
+      .votes {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <div class="input-card">
+          <h2>Sort Pizzas by</h2>
+          <button class="button" @click="sortDesc">Lowest votes</button>
+          <button class="button" @click="sortAsc">highest votes</button>
+        </div>
+        <br />
+        <div class="list" v-if="pizzas.length">
+          <table class="pizza">
+            <tr>
+              <th class="name">Hey</th>
+              <th class="votes">Rated</th>
+            </tr>
+            <tr v-for="(pizza, index) in pizzas" :key="index">
+              <td class="name">{{ pizza.name}}</td>
+              <td class="votes">{{ pizza.votes }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            pizzas: [
+              {
+                name: "Pepperoni",
+                votes: 120,
+              },
+              {
+                name: "Hawaiian",
+                votes: 134,
+              },
+              {
+                name: "All the meats",
+                votes: 231,
+              },
+              {
+                name: "Veggie",
+                votes: 134,
+              },
+              {
+                name: "Neapolitan",
+                votes: 98,
+              },
+            ],
+          };
+        },
+        methods: {
+          sortDesc() {
+            this.pizzas.sort((a, b) => {
+              if (a.votes < b.votes) return -1;
+              else if (a.votes > b.votes) return 1;
+              return 1;
+            });
+          },
+          sortAsc() {
+            this.pizzas.sort((a, b) => {
+              if (a.votes > b.votes) return -1;
+              else if (a.votes > b.votes) return 1;
+              return 1;
+            });
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
